@@ -1,0 +1,4 @@
+# يمنع رفع هذه الملفات لـ GitHub
+.env
+node_modules/
+.DS_Store
