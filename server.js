@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 const PORT = 3001;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://rafiq01.netlify.app", // دومين فرونتند Netlify
+  })
+);
 app.use(bodyParser.json());
 app.options("*", cors());
 
