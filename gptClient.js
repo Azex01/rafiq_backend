@@ -322,7 +322,8 @@ export async function askRafiq(userMessage) {
       Authorization: `Bearer ${OPENROUTER_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "deepseek-ai/deepseek-chat", // ✅ هذا هو النموذج المجاني
+      model: "deepseek-chat",
+      // ✅ هذا هو النموذج المجاني
       messages: [
         {
           role: "system",
