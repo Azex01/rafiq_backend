@@ -20,7 +20,7 @@ export async function askRafiq(userMessage) {
       "X-Title": SITE_NAME, // Site title for rankings on openrouter.ai
     },
     body: JSON.stringify({
-      model: "deepseek-chat", // Using the same model as before
+      model: "deepseek/deepseek-chat", // Using the same model as before
       messages: [
         {
           role: "system",
