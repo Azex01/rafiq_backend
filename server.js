@@ -15,7 +15,6 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.options("*", cors());
 
 app.post("/ask", async (req, res) => {
   const userMessage = req.body.message;
