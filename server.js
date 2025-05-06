@@ -11,7 +11,7 @@ const PORT = 3001;
 
 app.use(
   cors({
-    origin: "https://rafeeq1.netlify.app/", // دومين فرونتند Netlify
+    origin: "https://rafeeq1.netlify.app", // دومين فرونتند Netlify
   })
 );
 app.use(bodyParser.json());
