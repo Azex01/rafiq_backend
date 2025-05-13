@@ -289,8 +289,15 @@ app.get("/commitment", verifyToken, async (req, res) => {
 
 // add habit :
 app.post("/habits", verifyToken, async (req, res) => {
-  const { name, description, icon } = req.body;
-
+  const {
+    name,
+    description,
+    icon,
+    createdAt,
+    completionLog,
+    streak,
+    longestStreak,
+  } = req.body;
   if (!name) {
     return res.status(400).json({ message: "اسم العادة مطلوب" });
   }
@@ -301,10 +308,13 @@ app.post("/habits", verifyToken, async (req, res) => {
       description: description || "",
       icon: icon || "fa-heart",
       userId: req.user.id,
-      createdAt: new Date(),
-      streak: 0,
-      longestStreak: 0,
-      completionLog: {},
+      createdAt: createdAt ? new Date(createdAt) : new Date(),
+      streak: typeof streak === "number" ? streak : 0, // Use provided streak or default to 0
+      longestStreak: typeof longestStreak === "number" ? longestStreak : 0, // Use provided longestStreak or default to 0
+      completionLog: completionLog
+        ? new Map(Object.entries(completionLog))
+        : new Map(), // Use provided completionLog or default to empty Map
+      // Object.entries is used assuming completionLog from client is a plain object
     });
 
     await habit.save();
